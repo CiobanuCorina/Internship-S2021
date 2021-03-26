@@ -1,0 +1,10 @@
+{
+    "name": "cociobanu/internship",
+    "type": "project",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Module\\ProductModule\\" : "src/"
+        }
+    }
+}

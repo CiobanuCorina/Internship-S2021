@@ -1,6 +1,5 @@
 <?php
-
-namespace Module\ProductModule;
+namespace Module\ProductModule\Domain;
 
 class Product{
     private string $name;
