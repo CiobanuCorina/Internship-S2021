@@ -1,59 +1,48 @@
 <?php
+
 namespace Module\ProductModule\Domain;
 
 use ArrayObject;
-//use Module\ProductModule\Domain\Exception\ProductNotFoundException;
+use Module\ProductModule\Domain\Exception\SearchCriteriaInvalidPageException;
 
-class ProductCollection extends ArrayObject {
+class ProductCollection extends ArrayObject
+{
 
-    public function __construct(Product ... $products)
+    public function __construct(Product ...$products)
     {
         parent::__construct($products);
     }
 
-    public function hasCode(string $productCode): bool{
-        foreach($this as $product){
-            if($productCode === $product->code()){
+    public function hasCode(string $productCode): bool
+    {
+        foreach ($this as $product) {
+            if ($productCode === $product->getCode()) {
                 return true;
             }
         }
         return false;
     }
 
-    public function replace(Product $replacementProduct){
-        foreach($this as $index => $product){
-            if($product->code() === $product->code()) {
-                $this[$index] = $replacementProduct;
-                return;
-            }
-        }
-        //throw new ProductNotFoundException();
-    }
 
-    public function remove(Product $replacementProduct){
-        foreach($this as $index => $product){
-            if($product->code() === $product->code()) {
-                unset($this[$index]);
-                return;
-            }
-        }
-        //throw new ProductNotFoundException();
-    }
-
-    public function filterIf(bool $flag, callable $callback){
-        if ($flag){
+    public function filterIf(bool $flag, callable $callback)
+    {
+        if ($flag) {
             return $this->filter($callback);
         }
         return $this;
     }
+
     public function filter(callable $callback)
     {
         return new self(...array_filter($this->getArrayCopy(), $callback));
     }
-    
+
     public function slice(int $limit, int $page)
     {
-        # fixme search issue from here
+        define("MAX_PAGE_NR", ceil(count($this) / $limit));
+        if ($page > MAX_PAGE_NR) {
+            throw new SearchCriteriaInvalidPageException();
+        }
         return new self(...array_slice($this->getArrayCopy(), ($page - 1) * $limit, $limit));
     }
 

@@ -1,7 +1,3 @@
-{"First":{"name":"test1","code":"test1","price":12.6,"category":"test1"}}
-{"Product1":{"name":"name","code":"code","price":12.6,"category":"category"}}
-{"Product2":{"name":"name2","code":"code2","price":15.6,"category":"category2"}}
-{"Product3":{"name":"name3","code":"code3","price":25.6,"category":"category3"}}
-{"Product3":{"name":"name4","code":"code4","price":25.6,"category":"category4"}}
-{"Product":{"name":"name5","code":"code5","price":25.6,"category":"category5"}}
-{"Product":{"name":"name5","code":"code5","price":25.6,"category":"category5"}}
+{"name":"name1","code":"code1","price":25.6,"category":"category1"}
+{"name":"name3","code":"code3","price":25.6,"category":"category3"}
+{"name":"name5","code":"code2","price":25.6,"category":"category5"}

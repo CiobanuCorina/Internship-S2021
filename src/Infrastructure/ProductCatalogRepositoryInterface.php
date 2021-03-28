@@ -1,12 +1,15 @@
 <?php
 
-namespace Module\ProductModule\Application;
+
+namespace Module\ProductModule\Infrastructure;
+
 
 use Module\ProductModule\Domain\Product;
+use Module\ProductModule\Domain\ProductCollection;
+use Module\ProductModule\Domain\ProductSearchCriteria;
 
-interface ProductCatalogServiceInterface
+interface ProductCatalogRepositoryInterface
 {
-
     # CRUD
     public function getProductByCode(string $productCode): Product;
 
